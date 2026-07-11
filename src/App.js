@@ -2,8 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import BookList from './BookList';
+import { useState } from 'react';
+import IcrementDecrement from './IncrementDecrement';
+import ToDoList from './ToDoList';
 
 function App() {
+
+    // useState --> returns an array with two elements
+    // 1. is the current state value
+    // 2. is a function that allows you to update the state value
 
   const books =[
         {
@@ -33,16 +40,37 @@ function App() {
         }
     ]
 
+
+
  
 
   return (
-    <>
-      <BookList books={books}/>
-    </>
+    <div className="App">
+        {/* <Button/> */}
+        {/* <IcrementDecrement/> */}
+        <ToDoList/>
+    </div>
   );
 }
 
 export default App;
 
 
-// conditional rendering
+function Button() {
+
+
+    const [count, setCount] = useState(0);
+
+
+    function handleClick() {
+        console.log('Button clicked!', count);
+        setCount(count+1);
+    }
+
+    return (
+        <div>
+            <button onClick={handleClick}>Click me</button>
+            <h1>{count}</h1>
+        </div>
+    )
+}
