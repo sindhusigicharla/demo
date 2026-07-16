@@ -4,29 +4,10 @@ import { useState } from "react";
 function  ToDoList(){
 
     const [id, setId] = useState(5);
+    const [task, setTask] = useState('');
 
 
-
-    const todos = [
-        {
-            id:1,
-            description: "Get the groceries",
-        },
-        {
-            id:2,
-            description: "Read the book",
-        },
-        {
-            id: 3,
-            description: "Drink good amount of water",
-        },
-        {
-            id: 4,
-            description: "Drink good amount of water",
-        }
-    ]
-
-    const [list, setList] = useState(todos)
+    const [list, setList] = useState([])
 
     function deleteItem(id){
 
@@ -38,28 +19,39 @@ function  ToDoList(){
 
     function addItem(){
 
-        const newObj = {
-            id: id,
-            description: `New item ${id}`
+        const newTask = {
+            id:id,
+            description:task 
         }
 
-        const updatedList = [...list, newObj];
         setId(id+1);
-        setList(updatedList);
+        const newArray = [...list, newTask];
+        setList(newArray);
+        setTask('');
     }
+
+    
 
 
     return (
         <div>
-            <button onClick={()=>addItem()}>Add newItem</button>
-            <ul>
+            <input type="text" 
+                placeholder="enter the task description"
+                value={task}
+                onChange={(e)=>setTask(e.target.value)}
+            />
+            <button disabled={task===''} onClick={()=>addItem()}>Add newItem</button>
+
+
+            {list.length!==0?(<ul>
                 {list.map((listItem)=>{
                     return <li key={listItem.id}>
-                        {listItem.description}  
+                        {listItem.description}
                         <button onClick={()=>deleteItem(listItem.id)}>Delete</button>
                         </li>
                 })}
-            </ul>
+            </ul>): <h1>No more tasks</h1>}
+            
         </div>
     )
 }

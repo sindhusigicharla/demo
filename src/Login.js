@@ -3,9 +3,9 @@ import { useState } from "react";
 
 function Login(){
 
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
-    const [error, setError] = useState("");
+    const [error, setError] = useState(""); 
     const [successMessage, setSuccessMessage] = useState("");
     const [country, setCountry] = useState("");
     
@@ -60,7 +60,8 @@ function Login(){
                     Login</button>
             {error && <p>{error}</p>}
             {setSuccessMessage && <p>{successMessage}</p>}
-        </div>
+        </div>    
+        
     )
 }
 
@@ -85,3 +86,4 @@ export default Login;
 //5. age should be >=13
 //6. user submits display registration successful
 //7. display approproate error messages
+ 

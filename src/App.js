@@ -51,8 +51,8 @@ function App() {
         {/* <Button/> */}
         {/* <IcrementDecrement/> */}
         {/* <ToDoList/> */}
-        {/* <LikeButton/> */}
-        <Login/>
+        <LikeButton/>
+        {/* <Login/> */}
     </div>
   );
 }
